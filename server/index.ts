@@ -16,7 +16,14 @@ async function startServer() {
       ? path.resolve(__dirname, "public")
       : path.resolve(__dirname, "..", "dist", "public");
 
-  app.use(express.static(staticPath));
+// This tells the server to look in the "dist/public" folder created by the build
+const publicPath = path.join(process.cwd(), 'dist', 'public');
+app.use(express.static(publicPath));
+
+// Also update the "catch-all" route at the bottom of the file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
 
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
