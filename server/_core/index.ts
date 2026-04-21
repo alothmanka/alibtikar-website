@@ -27,18 +27,17 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
   }
   throw new Error(`No available port found starting from ${startPort}`);
 }
-
 async function startServer() {
   const app = express();
   const server = createServer(app);
-  // Configure body parser with larger size limit for file uploads
+
+  // 1. Middlewares (Keep your upload limits)
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // Parse cookies from requests
   app.use(cookieParser());
-  // OAuth callback under /api/oauth/callback
+
+  // 2. API & OAuth (The Admin login needs these!)
   registerOAuthRoutes(app);
-  // tRPC API
   app.use(
     "/api/trpc",
     createExpressMiddleware({
@@ -46,23 +45,22 @@ async function startServer() {
       createContext,
     })
   );
-  // development mode uses Vite, production mode uses static files
-  if (process.env.NODE_ENV === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
 
-  const preferredPort = parseInt(process.env.PORT || "3000");
-  const port = await findAvailablePort(preferredPort);
+  // 3. Static Files (Fixed path for Render)
+  const publicPath = path.join(process.cwd(), 'dist', 'public');
+  app.use(express.static(publicPath));
 
-  if (port !== preferredPort) {
-    console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
-  }
+  // 4. Catch-all for Frontend (Must be last)
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
+  });
 
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+  // 5. Start Server (Fixed for Render)
+  const port = process.env.PORT || 3000;
+  server.listen(Number(port), "0.0.0.0", () => {
+    console.log(`Server running on port ${port}`);
   });
 }
 
 startServer().catch(console.error);
+
