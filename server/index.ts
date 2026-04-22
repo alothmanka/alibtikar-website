@@ -1,13 +1,13 @@
-// Render Deploy Fix
+// Render Deploy Fix -
 
 import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
-import { registerOAuthRoutes } from "./auth.js"; 
-import { appRouter } from "./router.js";         
-import { createContext } from "./context.js";       
+import { registerOAuthRoutes } from "./auth"; 
+import { appRouter } from "./router";         
+import { createContext } from "./context";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
 const __filename = fileURLToPath(import.meta.url);
