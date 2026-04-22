@@ -5,9 +5,9 @@ import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
-import { registerOAuthRoutes } from "./auth.ts"; 
-import { appRouter } from "./router.ts";         
-import { createContext } from "./context.ts";
+import { registerOAuthRoutes } from "./_core/oauth"; 
+import { appRouter } from "./routers"; 
+import { createContext } from "./_core/context";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
 const __filename = fileURLToPath(import.meta.url);
