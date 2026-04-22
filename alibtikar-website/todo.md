@@ -1,0 +1,44 @@
+# Project TODO
+
+- [x] Basic homepage layout with bilingual support
+- [x] Navigation bar with logo and language toggle
+- [x] Service sections (Greenhouses, Landscaping, Hydroponics, Equipment)
+- [x] Contact section and footer
+- [x] Arabic translations for all content
+- [x] Brand color update to Teal (#0d5456)
+- [x] Logo processing and integration
+- [x] Upgrade project to full-stack with database and auth
+- [x] Create database schema for site content (contact details, labels, service descriptions)
+- [x] Create tRPC API endpoints for CRUD operations on site content
+- [x] Build super admin dashboard UI with tabbed navigation
+- [x] Admin: Edit contact details (phone numbers, email, address, social links)
+- [x] Admin: Edit service labels and descriptions (English & Arabic)
+- [x] Admin: Edit hero section content
+- [x] Admin: Edit footer content
+- [x] Connect frontend to display dynamic content from database
+- [x] Seed database with current hardcoded content
+- [x] Write vitest tests for admin API endpoints
+- [x] Add "New Content Item" dialog to admin dashboard
+- [x] Add "New Category/Section" creation support
+- [x] Add delete content item functionality
+- [x] Add backend API for deleting content items
+- [x] Update vitest tests for new add/delete endpoints
+- [x] Replace hero background image (remove NEOM Agritech billboard)
+- [x] Restore original hero image and remove NEOM Agritech billboard via image editing
+- [x] Add visible admin dashboard link in navbar for logged-in admin users
+- [x] Add floating WhatsApp contact button on the website
+- [x] Add standalone admin login with username/password (independent of Manus OAuth)
+- [x] Create admin login page UI
+- [x] Create backend admin auth endpoints (login, verify session)
+- [x] Protect admin dashboard with admin session check
+- [ ] Create contact_submissions database table
+- [ ] Add backend API endpoint to save contact form submissions
+- [ ] Set up email sending to admin@ibtikar-agri.sa
+- [ ] Build contact form UI component
+- [ ] Integrate form with backend API
+- [ ] Add form validation and error handling
+- [ ] Write tests for contact form API
+- [x] Upload four expertise section images to CDN
+- [x] Add images to existing services section (خبراتنا)
+- [x] Style service cards with image overlays
+- [x] Fix navbar links to navigate to sections (About Us → Contact, Projects → خبراتنا, etc.)
