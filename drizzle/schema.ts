@@ -1,17 +1,19 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { serial, pgEnum, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+
+export const roleEnum = pgEnum("role", ["user", "admin"]);
 
 /**
  * Core user table backing auth flow.
  */
-export const users = mysqlTable("users", {
-  id: int("id").autoincrement().primaryKey(),
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
-  role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
+  role: roleEnum("role").default("user").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
 
@@ -23,8 +25,8 @@ export type InsertUser = typeof users.$inferInsert;
  * Each row is a key-value pair with English and Arabic values.
  * Category groups related content together for the admin UI.
  */
-export const siteContent = mysqlTable("site_content", {
-  id: int("id").autoincrement().primaryKey(),
+export const siteContent = pgTable("site_content", {
+  id: serial("id").primaryKey(),
   /** Unique content key matching the translation keys (e.g., 'contact.phone', 'hero.title') */
   contentKey: varchar("contentKey", { length: 128 }).notNull().unique(),
   /** English value */
@@ -38,8 +40,8 @@ export const siteContent = mysqlTable("site_content", {
   /** Field type hint for the admin UI: text, textarea, phone, email, url */
   fieldType: varchar("fieldType", { length: 32 }).default("text").notNull(),
   /** Sort order within category */
-  sortOrder: int("sortOrder").default(0).notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  sortOrder: serial("sortOrder").default(0).notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull(),
 });
 
 export type SiteContent = typeof siteContent.$inferSelect;
