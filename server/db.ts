@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/postgres-js";
 import { InsertUser, users, siteContent, InsertSiteContent, SiteContent } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
