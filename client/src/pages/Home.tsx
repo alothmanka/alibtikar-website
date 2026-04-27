@@ -1,9 +1,11 @@
 import Hero from "@/components/Hero";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Leaf, Droplets, Sprout, Tractor } from "lucide-react";
 import ContactSection from "@/components/ContactSection";
 import FadeIn from "@/components/FadeIn";
 import Navbar from "@/components/Navbar";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -87,6 +89,8 @@ export default function Home() {
             alt="Alibtikar Icon"
             className="h-40 md:h-48 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity"
           />
+          <div className="h-px w-full max-w-xs bg-primary/20" />
+          <SocialLinks />
           <div className="h-px w-full max-w-xs bg-primary/20" />
           <p className="opacity-80 text-sm md:text-base font-light tracking-wide">
             {t("footer.rights")}

@@ -63,9 +63,10 @@ const DEFAULT_CATEGORY_CONFIG: Record<string, { label: string; icon: React.React
   contact: { label: "Contact Details", icon: <Phone className="h-4 w-4" />, description: "Phone numbers, email, address, and labels" },
   form: { label: "Form Labels", icon: <Pencil className="h-4 w-4" />, description: "Contact form field labels and placeholders" },
   footer: { label: "Footer", icon: <FileText className="h-4 w-4" />, description: "Footer copyright text and links" },
+  social: { label: "Social Media", icon: <Globe className="h-4 w-4" />, description: "Social media platform links (Facebook, Instagram, Twitter, LinkedIn, YouTube)" },
 };
 
-const DEFAULT_CATEGORY_ORDER = ["contact", "hero", "services", "navigation", "form", "footer"];
+const DEFAULT_CATEGORY_ORDER = ["contact", "hero", "services", "navigation", "form", "footer", "social"];
 
 const FIELD_TYPES = [
   { value: "text", label: "Text (single line)" },

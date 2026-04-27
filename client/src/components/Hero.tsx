@@ -6,6 +6,13 @@ export default function Hero() {
   const { t, dir } = useLanguage();
   const Arrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
+  const scrollToServices = () => {
+    const element = document.getElementById('services-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-[90vh] w-full overflow-hidden flex items-center">
       {/* Background Image with Overlay */}
@@ -34,6 +41,7 @@ export default function Hero() {
           <div className="flex gap-4 pt-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
             <Button 
               size="lg" 
+              onClick={scrollToServices}
               className="bg-chart-1 hover:bg-chart-1/90 text-primary font-bold text-lg px-8 h-14 rounded-full transition-transform hover:scale-105"
             >
               {t('hero.cta')}
