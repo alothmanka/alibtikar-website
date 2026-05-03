@@ -29,15 +29,18 @@ export default function ContactSection() {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4 p-4 bg-secondary/30 rounded-xl border border-border/50">
-                <div className="bg-white p-3 rounded-full shadow-sm text-chart-1">
-                  <Phone className="h-6 w-6" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">{t('contact.call')}</p>
-                  <p className="text-lg font-bold text-primary" dir="ltr">{t('contact.phone')}</p>
-                </div>
-              </div>
+  <div className="flex items-center gap-4 p-4 bg-secondary/30 rounded-xl border border-border/50">
+    <div className="bg-white p-3 rounded-full shadow-sm text-chart-1">
+      <Phone className="h-6 w-6" />
+    </div>
+    <div>
+      <p className="text-sm text-muted-foreground font-medium">{t('contact.call')}</p>
+      <div className="flex gap-6 flex-wrap">
+        <p className="text-lg font-bold text-primary" dir="ltr">{t('contact.phone')}</p>
+        <p className="text-lg font-bold text-primary" dir="ltr">{t('contact.phone2')}</p>
+      </div>
+    </div>
+  </div>
 
               <div className="flex items-center gap-4 p-4 bg-secondary/30 rounded-xl border border-border/50">
                 <div className="bg-white p-3 rounded-full shadow-sm text-chart-1">
