@@ -36,8 +36,12 @@ export default function ContactSection() {
     <div>
       <p className="text-sm text-muted-foreground font-medium">{t('contact.call')}</p>
       <div className="flex gap-6 flex-wrap">
-        <p className="text-lg font-bold text-primary" dir="ltr">{t('contact.phone')}</p>
-        <p className="text-lg font-bold text-primary" dir="ltr">{t('contact.phone2')}</p>
+        <a href={`tel:${t('contact.phone')}`} className="text-lg font-bold text-primary hover:text-primary/80 transition-colors">
+          {t('contact.phone')}
+        </a>
+        <a href={`tel:${t('contact.phone2')}`} className="text-lg font-bold text-primary hover:text-primary/80 transition-colors">
+          {t('contact.phone2')}
+        </a>
       </div>
     </div>
   </div>
